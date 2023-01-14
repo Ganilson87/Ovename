@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}| Produtos{% endblock  %}
+
+
+{% block content %}
+
+
+<section class="slider" style=" background: url({% static 'images/_FPA0244.jpg' %}) no-repeat;">
+    <div class="container">
+       <div class="columns is-justify-content-center">
+          <div class="column is-9-widescreen is-12-desktop">
+             <div class="has-text-centered">
+                <span class="is-block mb-4 is-uppercase has-text-white">Vendas e Reparação de Equipamentos Informáticos</span>
+                <h1 class="animated fadeInUp mb-6 "  style="color:#f33">Nossos Produtos</h1>
+
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <section class="section team position-relative" id="products">
+    <div class="container">
+       <div class="columns is-justify-content-center">
+          <div class="column is-6-widescreen is-8-desktop is-10-tablet has-text-centered">
+             <div class="section-title">
+                <a href="{% url 'produtos' %}"  class="btn btn-main">Todos</a>
+
+                {% for categoria in categorias  %}
+                <a href="?categoria={{categoria.id}}#products"  class="btn btn-main">{{categoria.nome}}</a>
+                {% endfor %}
+              
+             </div>
+          </div>
+       </div>
+       <div class="columns is-multiline is-justify-content-center">
+       
+        {% for produto in produtos %}
+        <div class="column is-4-desktop is-6-tablet">
+          <div class="shadow-sm-2 blog-item bg-white rounded" data-aos="fade-up" data-aos-delay="200"  data-aos-duration="500" >
+             <img src="{{produto.img1}}" class=" rounded-top" alt="...">
+             <div class="p-4">
+                <div class="is-flex w-100 is-justify-content-space-between">
+                   <span class="text-black"><b>{{produto.categoria.nome}}</b></span>
+                   
+                   <span >{{produto.createdAt}}</span>
+                </div>
+                <h3 class="mb-2 mt-2"><a href="blog-single.html">{{produto.nome}}</a></h3>
+                <div class="is-flex w-100 is-justify-content-space-between">
+                   <p class="mb-4" style="color:#f91; font-size:24px;">{{produto.preco}} Kz</p>
+                   
+                   {% if produto.prestacoes == 0 %}
+                   {% else %}
+                   <span > Pagamento com até {{produto.prestacoes}} prestacões</span>
+                   {% endif %}
+                </div>
+                <a href="blog-single.html" style="background-color:#f91; width:200px;" class="btn btn-main">Fazer Reserva</a>
+             </div>
+          </div>
+       </div>
+        {%empty%}
+ 
+        <h3x >Sem Produtos</h3x >
+        {% endfor %}
+        
+          </div>
+          <div class=" text-center has-text-centered">
+            <ul class="pagination">
+                 {% if produto_objects.has_previous %}
+                <a href="?pagina={{produto_objects.previous_page_number}}" class="btn btn-primary">Anterior</a>
+            
+                {% endif %}
+                <a href="" class="btn btn-main">Recarregar</a>
+          
+                 {% if produto_objects.has_next %}
+                <a href="?pagina={{produto_objects.next_page_number}}" class="btn btn-primary">Proximo</a>
+            
+                {% endif %}
+            
+            </ul>
+          
+          
+          </div>
+       </div>
+    </div>
+ </section>
+{% endblock  %}
