@@ -1,0 +1,80 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}| Produtos{% endblock  %}
+
+
+{% block content %}
+
+
+<section class="slider" style=" background: url({% static 'images/_FPA0244.jpg' %}) no-repeat;">
+    <div class="container">
+       <div class="columns is-justify-content-center">
+          <div class="column is-9-widescreen is-12-desktop">
+             <div class="has-text-centered">
+                <span class="is-block mb-4 is-uppercase has-text-white">Vendas e Reparação de Equipamentos Informáticos</span>
+                <h1 class="animated fadeInUp mb-6 "  style="color:#f33">Nossos Produtos</h1>
+
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <br>
+ <section class="about" >
+	<div class="container">
+		<div class="columns is-desktop is-align-items-center">
+			<div class="column is-6-desktop">
+				<div class="about-img" data-aos="fade-right" data-aos-delay="200" style="line-height: 0">
+					<img src="/{{produto.img1}}" alt="" class="">
+				</div>
+			</div>
+			<div class="column is-6-desktop">
+				<div class="about-item">
+					<div class="column is-6-desktop is-12-tablet">
+                        <h1>{{produto.nome}}</h1>
+            
+                         <div class="contact-content">
+                            <b>Categoria: </b> {{produto.categoria.nome}}
+                            <br/>
+                            <br/>
+                            {{produto.descricao}}
+                            <br/>
+                            <br/>
+                            Pagamento com até{{produto.prestacoes}}
+                            <br/>
+                            <br/>
+                            {{produto.img2}}
+                            {{produto.preco}}
+            
+                         </div>
+                      </div>
+                      <a href="{{produto.id}}" style="background-color:#f91; width:200px;" class="btn btn-main">Fazer Reserva</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+ <section class="contact-form-wrap section">
+    
+    <div class="container">
+        
+       <div class="columns is-multiline is-align-items-center bg-gray"  style="position: relative; display: flex;  align-items: center; align-content: center;">
+        
+   
+       {% if produto.img2 %}
+       <img src="/{{produto.img2}}" style="width: 300px; margin: 12px;" class=" rounded-top" alt="..."  >
+       {% endif %}
+       {% if produto.img3 %}
+       <img src="/{{produto.img3}}" style="width: 300px; margin: 12px;" class=" rounded-top" alt="..."  >
+       {% endif %}
+       {% if produto.img4  %}
+       <img src="/{{produto.img4}}" style="width: 300px; margin: 12px;" class=" rounded-top" alt="..."  >
+       {% endif %}
+      
+
+    </div>
+ </section>
+
+{% endblock  %}

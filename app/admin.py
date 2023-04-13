@@ -10,3 +10,4 @@ admin.site.index_title = "Ovename"
 admin.site.register(produto)
 admin.site.register(serie)
 admin.site.register(categoria)
+admin.site.register(acesso)

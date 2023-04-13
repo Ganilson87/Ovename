@@ -3,6 +3,17 @@ import uuid
 from config.settings import AUTH_USER_MODEL
 # Produtos
 
+class acesso(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    number = models.IntegerField(auto_created=True, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        db_table = "acesso"
+        ordering = ['-createdAt']
+
+        def __str__(self) -> str:
+            return self.nome
+
 class categoria(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     img = models.ImageField(verbose_name="", upload_to="static/media/img", blank=True)
